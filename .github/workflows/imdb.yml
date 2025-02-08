@@ -2,7 +2,7 @@ name: Scrape IMDb Top 250
 
 on:
   schedule:
-    - cron: "37 6 * * *"
+    - cron: "00 7 * * *"
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         
       - name: Run scraper
         run: | # python
-          uv run --with httpx,lxml,cssselect python scrape.py
+          uv run --with httpx,lxml,cssselect python scraper.py
 
       - name: 21f3002390@ds.study.iitm.ac.in
         run: |
