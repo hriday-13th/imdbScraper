@@ -2,7 +2,7 @@ name: Scrape IMDb Top 250
 
 on:
   schedule:
-    - cron: "20 6 * * *"
+    - cron: "30 6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -17,10 +17,13 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
+        
+      - name: Install Dependencies
+        run: uv pip install httpx lxml cssselect
 
       - name: Run scraper by 21f3002390@ds.study.iitm.ac.in
         run: | # python
-          uv run --with httpx,lxml,cssselect python scrape.py
+          uv run python scrape.py
 
       - name: Commit and push changes
         run: |
